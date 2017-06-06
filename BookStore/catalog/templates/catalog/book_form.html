@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% load bootstrap3 %}
+{% block content %}
+
+<h1>Create/Update Book</h1>
+
+<form action="" method="post" enctype="multipart/form-data" class="form">
+    {% csrf_token %}
+    <table>
+    <legend>{{ title }}</legend>
+        {% for field in form %}
+            {% if field.errors %}
+                <div class="control-group error">
+                    <tr><td><label class="control-label">{{ field.label }}</label> <td>
+                    <td><div class="controls">{{ field }}
+                        <span class="help-inline">
+                            {% for error in  field.errors %}{{ error }}{% endfor %}
+                        </span>
+                    </div></td></tr>
+                </div>
+            {% else %}
+                <div class="control-group">
+                    <tr>
+                    	<td><label class="control-label">{{ field.label }}</label><td>
+	                    <td><div class="controls">{{ field }}
+		                        {% if field.help_text %}
+		                            <p class="help-inline"><small>{{ field.help_text }}</small></p>
+		                        {% endif %}
+	                    	</div>
+	                    </td>
+                    </tr>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </table>
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">
+            {% bootstrap_icon "" %} Submit
+        </button>
+    {% endbuttons %}
+    
+</form>
+{% endblock %}

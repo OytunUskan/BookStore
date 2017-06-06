@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+<style>
+div.container marketing  {
+    margin-top: 80px !important;
+}
+</style>
+{% block content %}
+
+ 
+
+
+    {% if book_list %}
+    <ul>
+<div class="container marketing">
+	 	<div class="row">
+      {% for book in book_list %}
+      
+      
+	        <div class="col-lg-4">
+	          <img class="img-circle" src="{{ book.bookimage.url }}" alt="Generic placeholder image" width="140" height="140">
+	          <h2>{{ book.title }} ({{book.author}})</h2>
+	          <p>{{ book.summary }}</p>
+	          <p><a class="btn btn-default" href="{{ book.get_absolute_url }}" role="button">View details &raquo;</a></p>
+			  {% if user.is_staff %}
+				<p><a class="btn btn-default" href="{% url 'book_delete' book.id %}" role="button">Delete Book</a></p>
+				<p><a class="btn btn-default" href="{% url 'book_update' book.id %}" role="button">Update Book</a></p>
+				{% endif %}
+	        </div><!-- /.col-lg-4 -->
+	      
+      
+     
+      {% endfor %}
+      </div><!-- /.row -->
+	 </div>
+
+    </ul>
+    {% else %}
+      <p>There are no books in the library.</p>
+    {% endif %}       
+{% endblock %}
