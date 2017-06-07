@@ -149,7 +149,7 @@ class AuthorCreate(CreateView):
 
 class AuthorUpdate(UpdateView):
     model = Author
-    fields = ['first_name','last_name','date_of_birth','date_of_death']
+    fields = ['first_name','last_name','date_of_birth','date_of_death','author_description']
 
 class AuthorDelete(DeleteView):
     model = Author
