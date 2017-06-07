@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
     'bootstrap3',
-    'bootstrapform' 
+    'bootstrapform', 
 ]
 
 MIDDLEWARE = [
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'BookStore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['./BookStore/templates',],
+        'DIRS': ['C:/Users/oytun/git/BookStore/BookStore/templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
